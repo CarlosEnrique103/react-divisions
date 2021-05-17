@@ -7,7 +7,7 @@ function Home() {
   return (
     <div className="Home">
       <Button onClick={() => history.push("organizacion")}>
-        Ir a Organización
+        Ir a la Organización
       </Button>
     </div>
   );
