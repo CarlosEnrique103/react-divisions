@@ -1,12 +1,12 @@
 import "./App.scss";
+import Header from "./components/Header";
 import Navbar from "./components/Navbar";
-import TableContent from "./components/TableContent";
 
 function App() {
   return (
     <div className="app">
       <Navbar />
-      <TableContent />
+      <Header />
     </div>
   );
 }
