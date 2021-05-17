@@ -1,0 +1,48 @@
+.icon {
+  font-size: 12px;
+  fill: red;
+}
+
+.Navbar {
+  ul {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background: linear-gradient(
+        270deg,
+        #56a7f2 27.97%,
+        rgba(255, 255, 255, 0) 83.44%
+      ),
+      #2e52f8;
+    box-shadow: 1px 0px 4px rgba(0, 0, 0, 0.15);
+  }
+
+  li {
+    color: #fff;
+    padding: 0px 5px !important;
+    &:hover {
+      background: #fff2 !important;
+      color: #fff !important;
+    }
+
+    div:hover {
+      color: #fff !important;
+    }
+  }
+
+  .subMenu {
+    & svg {
+      font-size: 12px;
+    }
+  }
+
+  .logo-with-background {
+    background: #000;
+    padding: 0px 5px;
+  }
+
+  .active-link {
+    background: #fff2;
+  }
+
+}
