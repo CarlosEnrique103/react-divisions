@@ -1,7 +1,10 @@
 import { useState } from 'react'
 import {  Button, Modal } from 'antd';
 import { PlusOutlined } from '@ant-design/icons';
+import { useDispatch } from 'react-redux';
+import { fetchDivisions } from '../features/division/divisionSlice';
 function ModalContent({children, title="Basic Model"}) {
+  const dispatch = useDispatch();
   const [isModalVisible, setIsModalVisible] = useState(false);
   const showModal = () => {
     setIsModalVisible(true);
@@ -9,6 +12,7 @@ function ModalContent({children, title="Basic Model"}) {
 
   const handleOk = () => {
     setIsModalVisible(false);
+    dispatch(fetchDivisions());
   };
 
   const handleCancel = () => {

@@ -1,7 +1,12 @@
 import { Form, Input, InputNumber, Button, Select } from "antd";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchCreateDivision, fetchDivisions } from "../features/division/divisionSlice";
+
 import "./FormCreateDivision.scss";
 
 function FormCreateDivision() {
+  const divisions = useSelector((state) => state.division.divisions);
+  const dispatch = useDispatch();
   const layout = {
     labelCol: { span: 8 },
     wrapperCol: { span: 16 },
@@ -21,7 +26,7 @@ function FormCreateDivision() {
   };
 
   const onFinish = (values: any) => {
-    console.log(values);
+    dispatch(fetchCreateDivision(values.division));
   };
 
   return (
@@ -40,16 +45,20 @@ function FormCreateDivision() {
           <Input />
         </Form.Item>
         <Form.Item
-        name={["division", "upperDivision"]}
-        label="División superior"
-        hasFeedback
-        rules={[{ required: true, message: 'Por favor selecciona su división superior!' }]}
-      >
-        <Select placeholder="Por favor selecciona una división">
-          <Option value="1">Marketing</Option>
-          <Option value="2">Publicidad</Option>
-        </Select>
-      </Form.Item>
+          name={["division", "parent_id"]}
+          label="División superior"
+        >
+          <Select placeholder="Por favor selecciona una división">
+            <Option value={null}>
+              Ninguno
+            </Option> 
+            {divisions.map((division) => (
+              <Option key={division.id} value={division.id}>
+                {division.name}
+              </Option>
+            ))}
+          </Select>
+        </Form.Item>
         <Form.Item
           name={["division", "nivel"]}
           label="Nivel"
@@ -65,7 +74,7 @@ function FormCreateDivision() {
           <InputNumber />
         </Form.Item>
         <Form.Item
-          name={["division", "ambassador"]}
+          name={["division", "name_ambassador"]}
           label="Embajador"
           rules={[{ required: true }]}
         >

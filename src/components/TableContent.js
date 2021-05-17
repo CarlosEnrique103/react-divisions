@@ -69,7 +69,7 @@ function TableContent() {
     let dataNew = divisions.map((division, index) => ({
       ...division,
       key: ++index,
-      upperDivision: division.parentId || "-",
+      upperDivision: division.parent_id || '-',
       subdivisions: 0,
     }));
     tableContent = (

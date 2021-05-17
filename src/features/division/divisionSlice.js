@@ -13,6 +13,25 @@ export const fetchDivision = createAsyncThunk(
   }
 );
 
+export const fetchCreateDivision = createAsyncThunk(
+  "division/fetchCreateDivision",
+  async (division) => {
+    console.log(division);
+    const response = await fetch(`${BASE_URI}/divisions`, {
+      method: 'POST',
+      body: JSON.stringify(division),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+    const data = await response.json();
+    if (!response.ok) {
+      throw new Error(JSON.stringify(data));
+    }
+    return { division: data };
+  }
+);
+
 export const fetchDivisions = createAsyncThunk(
   "division/fetchDivisions",
   async () => {
