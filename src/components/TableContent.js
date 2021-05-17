@@ -1,4 +1,5 @@
-import { Button, Table } from 'antd';
+import { Table } from 'antd';
+import ModalContent from './ModalContent';
 import './TableContent.scss';
 
 function TableContent() {
@@ -34,10 +35,12 @@ function TableContent() {
       sorter: {
         compare: (a, b) => a.subdivisions - b.subdivisions,
       },
-      render: (text) => (
+      render: (text, key) => (
         <div className="Table-subdivisions">
           <span>{text}</span>
-          <Button type="primary"  size="small" shape="circle">+</Button>
+          <ModalContent division={key}>
+            <h1>{key.name}</h1>
+          </ModalContent>
         </div>
       )
     },

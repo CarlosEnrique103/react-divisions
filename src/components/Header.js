@@ -25,7 +25,7 @@ function Header() {
           <TableContent />
         </TabPane>
         <TabPane tab="Collaboradores" key="2">
-          Liste de  colaboradores
+          Lista de colaboradores
         </TabPane>
       </Tabs>
     </div>
