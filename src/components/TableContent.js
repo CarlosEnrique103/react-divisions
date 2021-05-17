@@ -1,4 +1,5 @@
 import { Table } from 'antd';
+import FormAddSubdivision from './FormAddSubdivision';
 import ModalContent from './ModalContent';
 import './TableContent.scss';
 
@@ -38,8 +39,8 @@ function TableContent() {
       render: (text, key) => (
         <div className="Table-subdivisions">
           <span>{text}</span>
-          <ModalContent title="Añadir Subdivisiones">
-            <h1>{key.name}</h1>
+          <ModalContent title={`Añadir subdivisiones a ${key.name}`}>
+            <FormAddSubdivision />
           </ModalContent>
         </div>
       )
