@@ -1,6 +1,22 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { BASE_URI } from "../../app/config";
 
+
+// GET DIVISIONS -> index
+export const fetchDivisions = createAsyncThunk(
+  "division/fetchDivisions",
+  async () => {
+    const response = await fetch(`${BASE_URI}/divisions`);
+    const data = await response.json();
+    if (!response.ok) {
+      throw new Error(JSON.stringify(data));
+    }
+    return { divisions: data };
+  }
+);
+
+
+// GET DIVISION -> show
 export const fetchDivision = createAsyncThunk(
   "division/fetchDivision",
   async (id) => {
@@ -13,6 +29,8 @@ export const fetchDivision = createAsyncThunk(
   }
 );
 
+
+// POST DIVISION -> store
 export const fetchCreateDivision = createAsyncThunk(
   "division/fetchCreateDivision",
   async (division) => {
@@ -32,17 +50,28 @@ export const fetchCreateDivision = createAsyncThunk(
   }
 );
 
-export const fetchDivisions = createAsyncThunk(
-  "division/fetchDivisions",
-  async () => {
-    const response = await fetch(`${BASE_URI}/divisions`);
+// PUT DIVISION -> store
+export const fetchUpdateDivision = createAsyncThunk(
+  "division/fetchUpdateDivision",
+  async (division) => {
+    console.log(division);
+    const response = await fetch(`${BASE_URI}/divisions/${division.id}`, {
+      method: 'PUT',
+      body: JSON.stringify(division.parent),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
     const data = await response.json();
     if (!response.ok) {
       throw new Error(JSON.stringify(data));
     }
-    return { divisions: data };
+    console.log(data);
+    return { division: data };
   }
 );
+
+
 
 export const divisionSlice = createSlice({
   name: "division",

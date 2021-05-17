@@ -53,7 +53,7 @@ function TableContent() {
           <div className="Table-subdivisions">
             <span>{text}</span>
             <ModalContent title={`Añadir subdivisiones a ${key.name}`}>
-              <FormAddSubdivision />
+              <FormAddSubdivision division={key} />
             </ModalContent>
           </div>
         ),

@@ -1,7 +1,13 @@
 import { Form, Button, Select } from "antd";
 import "./FormAddSubdivision.scss";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  fetchUpdateDivision,
+} from "../features/division/divisionSlice";
 
-function FormAddSubdivision() {
+function FormAddSubdivision({ division }) {
+  const divisions = useSelector((state) => state.division.divisions);
+  const dispatch = useDispatch();
   const layout = {
     labelCol: { span: 8 },
     wrapperCol: { span: 16 },
@@ -21,7 +27,13 @@ function FormAddSubdivision() {
   };
 
   const onFinish = (values: any) => {
-    console.log(values);
+    //console.log(values.division.parent_id, {parent_id: division.id})
+    dispatch(
+      fetchUpdateDivision({
+        id: values.division.parent_id,
+        parent: { parent_id: division.id },
+      })
+    );
   };
 
   return (
@@ -32,19 +44,19 @@ function FormAddSubdivision() {
         onFinish={onFinish}
         validateMessages={validateMessages}
       >
-        <Form.Item
-          name={["division", "parent_id"]}
-          hasFeedback
-          rules={[
-            {
-              required: true,
-              message: "Por favor selecciona su división",
-            },
-          ]}
-        >
+        <p>
+          Selecciona las subdivisiones que deseas agregar. Estas se encontrarán
+          debajo de Dirección General en el organigrama de la organización.
+        </p>
+        <Form.Item name={["division", "parent_id"]}>
           <Select placeholder="Por favor selecciona una división">
-            <Option value="1">Marketing</Option>
-            <Option value="2">Publicidad</Option>
+            {divisions
+              .filter((d) => d.id !== division.id)
+              .map((division) => (
+                <Option key={division.id} value={division.id}>
+                  {division.name}
+                </Option>
+              ))}
           </Select>
         </Form.Item>
         <Form.Item wrapperCol={{ ...layout.wrapperCol, offset: 8 }}>

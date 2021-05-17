@@ -1,6 +1,6 @@
 import { Form, Input, InputNumber, Button, Select } from "antd";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchCreateDivision, fetchDivisions } from "../features/division/divisionSlice";
+import { fetchCreateDivision } from "../features/division/divisionSlice";
 
 import "./FormCreateDivision.scss";
 
