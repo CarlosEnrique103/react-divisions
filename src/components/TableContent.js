@@ -38,7 +38,7 @@ function TableContent() {
       render: (text, key) => (
         <div className="Table-subdivisions">
           <span>{text}</span>
-          <ModalContent division={key}>
+          <ModalContent title="Añadir Subdivisiones">
             <h1>{key.name}</h1>
           </ModalContent>
         </div>

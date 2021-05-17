@@ -1,9 +1,8 @@
 import { useState } from 'react'
 import {  Button, Modal } from 'antd';
 import { PlusOutlined } from '@ant-design/icons';
-function ModalContent({children, division, visible}) {
+function ModalContent({children, title="Basic Model"}) {
   const [isModalVisible, setIsModalVisible] = useState(false);
-
   const showModal = () => {
     setIsModalVisible(true);
   };
@@ -19,7 +18,7 @@ function ModalContent({children, division, visible}) {
     <div className="Modal">
       <Button type="primary" size="small" shape="circle" icon={<PlusOutlined />} onClick={showModal}>
       </Button>
-      <Modal title="Basic Modal" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}>
+      <Modal title={title} visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}>
         {children}
       </Modal>
     </div>
