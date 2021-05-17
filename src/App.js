@@ -1,12 +1,19 @@
-import Header from "./components/Header";
-import Navbar from "./components/Navbar";
-
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route
+} from 'react-router-dom'
+import Division from './view/Division';
+import Home from './view/Home';
 function App() {
   return (
-    <div className="app">
-      <Navbar />
-      <Header />
-    </div>
+    <Router>
+      <Switch>
+        <Route path="/" exact component={Home}/>
+        <Route path="/organizacion" component={Division}/>
+
+      </Switch>
+    </Router>
   );
 }
 

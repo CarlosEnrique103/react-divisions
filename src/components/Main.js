@@ -1,11 +1,11 @@
 import { Tabs, Button } from 'antd';
 import { VerticalAlignTopOutlined, VerticalAlignBottomOutlined } from '@ant-design/icons';
 import TableContent from './TableContent';
-import './Header.scss';
+import './Main.scss';
 import ModalContent from './ModalContent';
 import FormCreateDivision from './FormCreateDivision';
 
-function Header() {
+function Main() {
   const { TabPane } = Tabs;
 
   function callback(key) {
@@ -36,4 +36,4 @@ function Header() {
   );
 }
 
-export default Header;
+export default Main;
